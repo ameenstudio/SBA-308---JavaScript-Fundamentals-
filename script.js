@@ -84,11 +84,17 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmission){// 1 - d
             let assignment_id=submission.assignment_id
             let submissionAt=submission.submission.submitted_at
             let score=submission.submission.score
+            let foundAssign;
+            let dueDate;
+            let submittedDate;
             console.log(score)
             for (let singleAssign of AssignmentGroup.assignments ){
                 if(singleAssign.id==assignment_id){
-                    let foundAssign=singleAssign.id 
+                    foundAssign=singleAssign.id
                 }
+                dueDate=new Date ( singleAssign.due_at)
+                submittedDate=           // I'm stuck here could not get pass it 
+
             }
             
 
