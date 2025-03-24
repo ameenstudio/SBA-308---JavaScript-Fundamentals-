@@ -93,7 +93,7 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmission){// 1 - d
                     foundAssign=singleAssign.id
                 }
                 dueDate=new Date ( singleAssign.due_at)
-                submittedDate=           // I'm stuck here could not get pass it 
+                // submittedDate=           // I'm stuck here could not get pass it 
 
             }
             
