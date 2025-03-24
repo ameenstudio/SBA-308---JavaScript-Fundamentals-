@@ -79,13 +79,17 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmission){// 1 - d
             throw new Error("Course Id does not match Assignment group course id")
         }
         for(let submission of LearnerSubmission ){
-            // console.log(submission.submission);
+            // data from the objects
             let learner_id=submission.learner_id
             let assignment_id=submission.assignment_id
             let submissionAt=submission.submission.submitted_at
             let score=submission.submission.score
             console.log(score)
-
+            for (let singleAssign of AssignmentGroup.assignments ){
+                if(singleAssign.id==assignment_id){
+                    let foundAssign=singleAssign.id 
+                }
+            }
             
 
         }
