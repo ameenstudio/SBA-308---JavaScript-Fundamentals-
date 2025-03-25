@@ -74,6 +74,8 @@ const CourseInfo = {
     }
   ];
 function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmission){// 1 - declare function
+  const result=[];
+  let learners={}
     try{
         if(AssignmentGroup.course_id!==CourseInfo.id){// 
             throw new Error("Course Id does not match Assignment group course id")
@@ -87,18 +89,35 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmission){// 1 - d
             let foundAssign;
             let dueDate;
             let submittedDate;
+            let points_possible;
+            let precentage;
             console.log(score)
             for (let singleAssign of AssignmentGroup.assignments ){
                 if(singleAssign.id==assignment_id){
                     foundAssign=singleAssign.id
                 }
                 dueDate=new Date ( singleAssign.due_at)
-                // submittedDate=           // I'm stuck here could not get pass it 
+                submittedDate=new Date (submissionAt)
+                points_possible=singleAssign.points_possible
+                if (!foundAssign){
+                  continue;
+                }     
+                if (submittedDate>dueDate){
+                  score-=points_possible*0.1
+                }
+                 precentage =(score/points_possible)
 
+                 if (!learners[learner_id]) { //does the learner exist in the object, if not create or add properties to the object
+                  learners[learner_id] = { id: learner_id, avg: 0, totalPoints: 0,   weightedTotal: 0 };
+              }
+              learners[learner_id].totalPoints += points_possible;
+              learners[learner_id].weightedTotal += score;
             }
+            console.log(learners,"%");
             
 
         }
+        
 
     }catch(err){
         console.error(err)
@@ -106,9 +125,24 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmission){// 1 - d
 
     }
 
-    
+  return result  
 }
 getLearnerData(CourseInfo, AssignmentGroup ,LearnerSubmissions)
+ 
 
 
+//   let result = [
+//     {
+//       id: 125,
+//       avg: 0.985, // (47 + 150) / (50 + 150)
+//       1: 0.94, // 47 / 50
+//       2: 1.0 // 150 / 150
+//     },
+//     {
+//       id: 132,
+//       avg: 0.82, // (39 + 125) / (50 + 150)
+//       1: 0.78, // 39 / 50
+//       2: 0.833 // late: (140 - 15) / 150
+//     }
+//   ];
 
