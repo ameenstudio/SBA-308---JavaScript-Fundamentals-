@@ -91,7 +91,7 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmission){// 1 - d
             let submittedDate;
             let points_possible;
             let precentage;
-            console.log(score)
+            // console.log(score)
             for (let singleAssign of AssignmentGroup.assignments ){
                 if(singleAssign.id==assignment_id){
                     foundAssign=singleAssign.id
@@ -113,12 +113,16 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmission){// 1 - d
               learners[learner_id].totalPoints += points_possible;
               learners[learner_id].weightedTotal += score;
               learners[learner_id].avg = (learners[learner_id].weightedTotal / learners[learner_id].totalPoints) * 100;
+              // delete learners[learner_id].totalPoints;
+              
             }
-            console.log(learners,"%");
+            // console.log(learners,"%");
             
-
-        }
-        
+            
+            
+          }
+          
+          result.push(learners) 
 
     }catch(err){
         console.error(err)
@@ -128,7 +132,11 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmission){// 1 - d
 
   return result  
 }
-getLearnerData(CourseInfo, AssignmentGroup ,LearnerSubmissions)
+
+
+const result= getLearnerData(CourseInfo, AssignmentGroup ,LearnerSubmissions) 
+console.log("Final output",result);
+
  
 
 
