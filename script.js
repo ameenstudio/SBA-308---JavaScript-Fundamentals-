@@ -112,6 +112,7 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmission){// 1 - d
               }
               learners[learner_id].totalPoints += points_possible;
               learners[learner_id].weightedTotal += score;
+              learners[learner_id].avg = (learners[learner_id].weightedTotal / learners[learner_id].totalPoints) * 100;
             }
             console.log(learners,"%");
             
